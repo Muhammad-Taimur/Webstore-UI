@@ -71,9 +71,9 @@ formregister = new FormGroup({
         console.log(error[1].modelState["model.ConfirmPassword"][0])
       }
      
-      else if(this.formregister.value.password.length !== password.length ){
-        console.log(error[1].modelState["model.Password"][0])
-      }
+      // else if(this.formregister.value.password.length !== password.length ){
+      //   console.log(error[1].modelState["model.Password"][0])
+      // }
       //else if (this.errMsg[0] === "Error Code: 400"  )     {
         // console.log(error[1].modelState.error[1])
       //console.log(error.modelState["model.ConfirmPassword"][0])
