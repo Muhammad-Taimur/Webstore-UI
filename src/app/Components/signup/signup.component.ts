@@ -46,14 +46,28 @@ formregister = new FormGroup({
     .subscribe((data)=>{
       this.authservice= data,
       console.log(this.authservice);
+      console.log(data.status);
     },
 
     (error) => {this.errMsg = error,
-      console.log(error.message)
-    
+      console.log(error)
+      console.log(error.modelState)
+      console.log(error.status)
+      var password = "123456"
+      // if(this.formregister.value.password !== this.formregister.value.confirmpassword){
+      //   //console.log(error.modelState["model.Password"][0])
+      //   console.log(error.modelState["model.ConfirmPassword"][0])
+      // }
+     
+      // if(this.formregister.value.password.length !== password.length ){
+      //   console.log(error.modelState["model.Password"][0])
+      // }
+      if(error === 400  )     {
       //console.log(error.modelState["model.ConfirmPassword"][0])
       //console.log(error.modelState["model.Password"][0])
-      console.log(error.modelState.error[1])
+      console.log(error.modelState.error[0])
+    }
+    
     }
     );
     

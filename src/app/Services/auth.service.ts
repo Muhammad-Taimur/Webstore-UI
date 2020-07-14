@@ -15,16 +15,38 @@ export class AuthService {
 
 
 
-register(data){
-return this.http.post<any>(this.registerApi,data)
+register(data) :Observable<any>{
+return this.http.post<any>(this.registerApi,data,{observe : 'response'})
 .pipe(
   catchError(this.errorHandler)
 );
 }
 
-errorHandler(error: HttpErrorResponse){
+errorHandler(error: HttpErrorResponse ){
   //  return observableThrowError(error.message || "Yesh Server Ka Error")
-  return observableThrowError(error.error || "Yesh Server Ka Error")
+
+  let errorMessage = '';
+
+  if (error.error instanceof ErrorEvent) {
+
+    // client-side error
+
+    errorMessage = `Error: ${error.error.message}`;
+
+  } else {
+
+    // server-side error
+
+    //errorMessage = `Error Code: ${error.status}\nMessage: ${error.error}`;
+    errorMessage =`${error.error}`
+
+  }
+
+  //window.alert(errorMessage);
+
+  return observableThrowError(errorMessage);
+  //return observableThrowError(error.error && error.message && error.status);
+  
   }
 
 }
