@@ -25,22 +25,22 @@ return this.http.post<any>(this.registerApi,data,{observe : 'response'})
 errorHandler(error: HttpErrorResponse ){
   //  return observableThrowError(error.message || "Yesh Server Ka Error")
 
-  let errorMessage = '';
-
+  let errorMessage = [];
+  
   if (error.error instanceof ErrorEvent) {
 
     // client-side error
 
-    errorMessage = `Error: ${error.error.message}`;
+    errorMessage[0] = `Error: ${error.error.message}`;
 
   } else {
 
     // server-side error
 
-    //errorMessage = `Error Code: ${error.status}\nMessage: ${error.error}`;
-    errorMessage =`${error.error}`
-
-  }
+    errorMessage[0] = `Error Code: ${error.status}`;
+    errorMessage[1] = error.error;
+    //console.log(error.message[1])
+       }
 
   //window.alert(errorMessage);
 

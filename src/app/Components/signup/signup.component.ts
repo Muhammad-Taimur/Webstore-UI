@@ -49,26 +49,45 @@ formregister = new FormGroup({
       console.log(data.status);
     },
 
-    (error) => {this.errMsg = error,
-      console.log(error)
-      console.log(error.modelState)
-      console.log(error.status)
+    (error) => {this.errMsg = error //,
+     //console.log(this.errMsg)
+      console.log(error[0])
+      //  console.log(error[1].modelState.error[1])
+      //  console.log(this.errMsg)
       var password = "123456"
-      // if(this.formregister.value.password !== this.formregister.value.confirmpassword){
-      //   //console.log(error.modelState["model.Password"][0])
-      //   console.log(error.modelState["model.ConfirmPassword"][0])
-      // }
-     
-      // if(this.formregister.value.password.length !== password.length ){
-      //   console.log(error.modelState["model.Password"][0])
-      // }
-      if(error === 400  )     {
+
+      //  if (this.errMsg[0] === "Error Code: 400"  && this.errMsg[1].modelState.error[1] === 'Email '+"'"+this.formregister.value.email+"'"+' is already taken.'){
+        // console.log(error[1].modelState.error[1])
       //console.log(error.modelState["model.ConfirmPassword"][0])
       //console.log(error.modelState["model.Password"][0])
-      console.log(error.modelState.error[0])
+     // console.log(error.modelState.error[0])
+    //}
+
+
+      //console.log(error.modelState)
+      
+             if(this.formregister.value.password !== this.formregister.value.confirmpassword){
+        //console.log(error.modelState["model.Password"][0])
+        console.log(error[1].modelState["model.ConfirmPassword"][0])
+      }
+     
+      else if(this.formregister.value.password.length !== password.length ){
+        console.log(error[1].modelState["model.Password"][0])
+      }
+      //else if (this.errMsg[0] === "Error Code: 400"  )     {
+        // console.log(error[1].modelState.error[1])
+      //console.log(error.modelState["model.ConfirmPassword"][0])
+      //console.log(error.modelState["model.Password"][0])
+     // console.log(error.modelState.error[0])
+    //}
+   else if (this.errMsg[0] === "Error Code: 400"  && this.errMsg[1].modelState.error[1] === 'Email '+"'"+this.formregister.value.email+"'"+' is already taken.'){
+      console.log(error[1].modelState.error[1])
+   //console.log(error.modelState["model.ConfirmPassword"][0])
+   //console.log(error.modelState["model.Password"][0])
+  // console.log(error.modelState.error[0])
+ }
     }
     
-    }
     );
     
   }
