@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +15,9 @@ export class SignupComponent implements OnInit {
   public errMsg;
   public passwordMatchValidator;
 
-  constructor(private _authservice: AuthService) { }
+  constructor(private _authservice: AuthService,
+    private router: Router,
+    private toastr: ToastrService) { }
 
 formregister = new FormGroup({
   
@@ -47,6 +51,14 @@ formregister = new FormGroup({
       this.authservice= data,
       console.log(this.authservice);
       console.log(data.status);
+      
+      //if satus code is ok it will Navigate to Login Page
+      if(data.status === 200){
+        this.router.navigate(['login']);
+        this.toastr.success( 'Your account is created successfully','Congrats!',{
+          closeButton : true
+        });
+      }
     },
 
     (error) => {this.errMsg = error //,
@@ -69,6 +81,10 @@ formregister = new FormGroup({
              if(this.formregister.value.password !== this.formregister.value.confirmpassword){
         //console.log(error.modelState["model.Password"][0])
         console.log(error[1].modelState["model.ConfirmPassword"][0])
+        this.toastr.error( error[1].modelState["model.ConfirmPassword"][0],'Error',
+        {
+          closeButton : true
+        });
       }
      
       // else if(this.formregister.value.password.length !== password.length ){
@@ -82,6 +98,11 @@ formregister = new FormGroup({
     //}
    else if (this.errMsg[0] === "Error Code: 400"  && this.errMsg[1].modelState.error[1] === 'Email '+"'"+this.formregister.value.email+"'"+' is already taken.'){
       console.log(error[1].modelState.error[1])
+      this.toastr.error( error[1].modelState.error[1],'Error',
+      {
+        closeButton : true
+
+      });
    //console.log(error.modelState["model.ConfirmPassword"][0])
    //console.log(error.modelState["model.Password"][0])
   // console.log(error.modelState.error[0])

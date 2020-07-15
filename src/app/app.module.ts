@@ -9,6 +9,8 @@ import { SignupComponent } from './Components/signup/signup.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { AuthService } from './Services/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,17 @@ import { AuthService } from './Services/auth.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      closeButton : true,
+      timeOut: 5000,
+      extendedTimeOut: 2000,
+      easing: 'ease-in',
+      easeTime : 400,
+      tapToDismiss:false,
+      preventDuplicates: true
+    })
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
