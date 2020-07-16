@@ -42,7 +42,12 @@ formregister = new FormGroup({
 
 
   submit(){
+    var message = document.getElementById('error-nwl');
 
+    //var password = "123456"
+if(this.formregister.value.password.length < 6){
+    message.innerHTML = " you have to enter at least 6 digit!"
+}
     // console.log(this.formregister)
     console.log(this.formregister.value)
 
@@ -55,6 +60,8 @@ formregister = new FormGroup({
       //if satus code is ok it will Navigate to Login Page
       if(data.status === 200){
         this.router.navigate(['login']);
+
+        //toast the message
         this.toastr.success( 'Your account is created successfully','Congrats!',{
           closeButton : true
         });
@@ -66,7 +73,7 @@ formregister = new FormGroup({
       console.log(error[0])
       //  console.log(error[1].modelState.error[1])
       //  console.log(this.errMsg)
-      var password = "123456"
+      
 
       //  if (this.errMsg[0] === "Error Code: 400"  && this.errMsg[1].modelState.error[1] === 'Email '+"'"+this.formregister.value.email+"'"+' is already taken.'){
         // console.log(error[1].modelState.error[1])
@@ -81,7 +88,7 @@ formregister = new FormGroup({
              if(this.formregister.value.password !== this.formregister.value.confirmpassword){
         //console.log(error.modelState["model.Password"][0])
         console.log(error[1].modelState["model.ConfirmPassword"][0])
-        this.toastr.error( error[1].modelState["model.ConfirmPassword"][0],'Error',
+        this.toastr.error( error[1].modelState["model.ConfirmPassword"][0],'Oops!',
         {
           closeButton : true
         });
@@ -98,7 +105,7 @@ formregister = new FormGroup({
     //}
    else if (this.errMsg[0] === "Error Code: 400"  && this.errMsg[1].modelState.error[1] === 'Email '+"'"+this.formregister.value.email+"'"+' is already taken.'){
       console.log(error[1].modelState.error[1])
-      this.toastr.error( error[1].modelState.error[1],'Error',
+      this.toastr.error( error[1].modelState.error[1],'Oops!',
       {
         closeButton : true
 

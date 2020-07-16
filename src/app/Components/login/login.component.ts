@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
       
           console.log(error[1].error_description)
           console.log(error)
-          this.toastr.error( error[1].error_description,'Error',
+          this.toastr.error( error[1].error_description,'Oops!',
           {
             closeButton : true
     
