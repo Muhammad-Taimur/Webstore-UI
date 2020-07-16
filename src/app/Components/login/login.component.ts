@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
       //   this.toastr.success('Login','Successfully')
       //       }
       if(data.status === 200){
+        this.router.navigate(['dashboard']);
         this.toastr.success('Sucessfully Login','Sucessful',{
           tapToDismiss:true
         })
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
       console.log(data)
       console.log(data.status)
       console.log(data.body.access_token)
+      console.log(data.body)
 
       //setting full Object in Localstroage
       localStorage.setItem ('user',JSON.stringify(data.body))
