@@ -12,6 +12,8 @@ import { AuthService } from './Services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { OrderComponent } from './Components/order/order.component';
+import { ProductComponent } from './Components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
     SignupComponent,
     LoginComponent,
     NotFoundComponent,
-    DashboardComponent
+    DashboardComponent,
+    OrderComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
