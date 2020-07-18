@@ -64,4 +64,10 @@ errorHandler(error: HttpErrorResponse ){
   
   }
 
+
+  //Check user is Logged in or Not
+  loggedIn(){
+    return !!JSON.parse(localStorage.getItem('user'))
+  }
+
 }

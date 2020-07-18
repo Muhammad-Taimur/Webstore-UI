@@ -14,6 +14,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { OrderComponent } from './Components/order/order.component';
 import { ProductComponent } from './Components/product/product.component';
+import { AuthGuard } from './Guard/auth.guard';
+import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,7 @@ import { ProductComponent } from './Components/product/product.component';
       preventDuplicates: true
     })
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard,AlreadyLoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

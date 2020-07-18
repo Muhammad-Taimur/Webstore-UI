@@ -4,13 +4,15 @@ import { SignupComponent } from './Components/signup/signup.component';
 import { LoginComponent } from './Components/login/login.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { AuthGuard } from './Guard/auth.guard';
+import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
 
 
 const routes: Routes = [
   {path:'', redirectTo : '/login', pathMatch: 'full'},
-  {path:'signup', component: SignupComponent},
-  {path:'login', component:LoginComponent},
-  {path:'dashboard', component:DashboardComponent},
+  {path:'signup', component: SignupComponent,canActivate:[AlreadyLoggedInGuard]},
+  {path:'login', component:LoginComponent,canActivate:[AlreadyLoggedInGuard]},
+  {path:'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
   {path:'**', component:NotFoundComponent}
 
 ];
