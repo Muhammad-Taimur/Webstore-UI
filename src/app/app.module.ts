@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
+// import {FlexLayoutModule} from '@angular/flex-layout'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +19,8 @@ import { OrderComponent } from './Components/order/order.component';
 import { ProductComponent } from './Components/product/product.component';
 import { AuthGuard } from './Guard/auth.guard';
 import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
+
+
 
 @NgModule({
   declarations: [
@@ -34,6 +39,9 @@ import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatCardModule,
+    MatSliderModule,
+    // FlexLayoutModule,
     ToastrModule.forRoot({
       closeButton : true,
       timeOut: 5000,
