@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-signup',
@@ -14,10 +15,12 @@ export class SignupComponent implements OnInit {
   public authservice = []
   public errMsg;
   public passwordMatchValidator;
+  
 
   constructor(private _authservice: AuthService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService) { }
 
 formregister = new FormGroup({
   
@@ -42,6 +45,7 @@ formregister = new FormGroup({
 
 
   submit(){
+    this.spinner.show();
     var message = document.getElementById('error-nwl');
 
     //var password = "123456"
@@ -56,6 +60,7 @@ if(this.formregister.value.password.length < 6){
       this.authservice= data,
       console.log(this.authservice);
       console.log(data.status);
+      this.spinner.hide();
       
       //if satus code is ok it will Navigate to Login Page
       if(data.status === 200){
@@ -70,7 +75,8 @@ if(this.formregister.value.password.length < 6){
 
     (error) => {this.errMsg = error //,
      //console.log(this.errMsg)
-      console.log(error[0])
+     this.spinner.hide(); 
+     console.log(error[0])
       //  console.log(error[1].modelState.error[1])
       //  console.log(this.errMsg)
       

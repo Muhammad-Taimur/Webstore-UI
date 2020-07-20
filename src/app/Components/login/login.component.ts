@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   public authservice = []
   public errMsg;
+  
 
   formlogin = new FormGroup({
     name: new FormControl('',
@@ -30,8 +31,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  public show = true
   submit(){
 
     this.spinner.show();
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
           tapToDismiss:true
         })
       }
-      this.show =data;
+      
       this.spinner.hide();
 
     
@@ -72,7 +71,7 @@ export class LoginComponent implements OnInit {
       //    console.log("Invalid User Name and Password" + error)}
 
       
-          this.show = error
+          
           this.spinner.hide();
           console.log(error[1].error_description)
           console.log(error)
