@@ -9,6 +9,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 // import {FlexLayoutModule} from '@angular/flex-layout'
 
@@ -25,6 +26,7 @@ import { OrderComponent } from './Components/order/order.component';
 import { ProductComponent } from './Components/product/product.component';
 import { AuthGuard } from './Guard/auth.guard';
 import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 
 
@@ -36,7 +38,8 @@ import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
     NotFoundComponent,
     DashboardComponent,
     OrderComponent,
-    ProductComponent
+    ProductComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
     MatButtonModule,
     MatProgressSpinnerModule,
     NgxSpinnerModule,
+    MatToolbarModule,
     // FlexLayoutModule,
     ToastrModule.forRoot({
       closeButton : true,
