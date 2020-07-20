@@ -22,7 +22,22 @@
                         <div id="register-link" class="text-right">
                             <a routerLink="/signup" class="text-info">Register here</a>
                         </div>
+                        <!-- <ngx-spinner
+  bdColor="rgba(0, 0, 0, 1)">
+  template="<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />" 
+</ngx-spinner> -->
+
+<ngx-spinner *ngIf="show"
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="square-jelly-box"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
                     </form>
+                    
+                    
 
                     
                 </div>

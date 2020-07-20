@@ -4,6 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+//import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// Import library module
+import { NgxSpinnerModule } from "ngx-spinner";
+
 // import {FlexLayoutModule} from '@angular/flex-layout'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +47,9 @@ import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
     BrowserAnimationsModule,
     MatCardModule,
     MatSliderModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    NgxSpinnerModule,
     // FlexLayoutModule,
     ToastrModule.forRoot({
       closeButton : true,

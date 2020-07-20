@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -24,20 +25,23 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     private toastr: ToastrService,
-    private _authservice: AuthService) { }
+    private _authservice: AuthService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
 
+  public show = true
   submit(){
 
+    this.spinner.show();
+    
     this._authservice.login(this.formlogin.value.name, this.formlogin.value.password)
     .subscribe((data) =>
     {
       this.authservice=data
       //console.log(this.authservice)
       // if(data.status === 200){
-
       //   this.toastr.success('Login','Successfully')
       //       }
       if(data.status === 200){
@@ -46,6 +50,10 @@ export class LoginComponent implements OnInit {
           tapToDismiss:true
         })
       }
+      this.show =data;
+      this.spinner.hide();
+
+    
       console.log(data)
       console.log(data.status)
       console.log(data.body.access_token)
@@ -59,13 +67,13 @@ export class LoginComponent implements OnInit {
 
       //to clear the localstorage 
       //localStorage.clear()
-
-
     },
     (error) => {this.errMsg = error
       //    console.log("Invalid User Name and Password" + error)}
 
       
+          this.show = error
+          this.spinner.hide();
           console.log(error[1].error_description)
           console.log(error)
           this.toastr.error( error[1].error_description,'Oops!',
