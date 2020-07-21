@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // Import library module
@@ -27,6 +28,7 @@ import { ProductComponent } from './Components/product/product.component';
 import { AuthGuard } from './Guard/auth.guard';
 import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 
 
@@ -39,7 +41,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
     DashboardComponent,
     OrderComponent,
     ProductComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
     MatProgressSpinnerModule,
     NgxSpinnerModule,
     MatToolbarModule,
+    MatIconModule,
     // FlexLayoutModule,
     ToastrModule.forRoot({
       closeButton : true,

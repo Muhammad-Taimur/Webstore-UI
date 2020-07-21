@@ -14,7 +14,7 @@ public show :boolean = true
   }
 
   onLogout(){
-  
+    
     localStorage.clear();
   }
 }
