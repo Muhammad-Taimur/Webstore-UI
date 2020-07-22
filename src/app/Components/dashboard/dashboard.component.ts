@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   public productservice = []
+  public imageBlob =[]
   public errMsg;
 
   constructor(private _productservice:ProductService) { }
@@ -21,9 +22,10 @@ export class DashboardComponent implements OnInit {
 
     this._productservice.getProduct()
     .subscribe((data) => {
-      this.productservice = data;
-    console.log(data.body)
-    // console.log(data)
+      this.productservice = data.body;
+      // this.imageBlob = data.body
+    // console.log(this.imageBlob)
+    console.log(this.productservice)
     },
     error => {this.errMsg = error,
     console.log(error)});
