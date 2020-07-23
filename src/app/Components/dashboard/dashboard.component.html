@@ -14,7 +14,7 @@
     </mat-card-header> -->
     <div *ngFor="let productservice of product.productBlob; let first = first;">
     <img *ngIf="first"
-    [ngStyle]="{'height' : '320px'}"
+    [ngStyle]="{'height' : '320px','border-radius':'5px 5px 0 0'}"
      mat-card-image [src]="productservice.imagePath" alt="Photo of a Shiba Inu">
     </div>
 
@@ -32,16 +32,17 @@
   </mat-card>
   
   
+  
 
 
   <mat-card  class="example-card">
-    <mat-card-header>
+    <!-- <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       
       <a mat-card-title  routerLink="">Shiba</a>
       
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
+    </mat-card-header> -->
     <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
     <mat-card-content>
       <p>

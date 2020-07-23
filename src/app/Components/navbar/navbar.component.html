@@ -3,10 +3,25 @@
     <span>May App</span>
     <div class="spacer"></div>
 <a button mat-button [routerLink]='["/dashboard"]'>
-    <mat-icon aria-hidden="false" aria-label="Example home icon" >home </mat-icon> </a>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" >home </mat-icon></a>
     <!-- <a button mat-button [routerLink]='["/dashboard"]'>Home</a> -->
     <a button mat-button [routerLink]='["/order"]'>Order</a>
+    <a button mat-button [routerLink]='["/order"]'>Add Product</a>
     <a button mat-button [routerLink]='["/contact"]'>Contact</a>
 <a mat-raised-button color="accent" [routerLink]='["/login"]' (click)="onLogout()">Log Out</a>
+
+<!-- <a button mat-button class="addButton" [routerLink]='["/dashboard"]'>
+    <mat-icon class="addButtonAlignment" aria-hidden="false" color="accent" >add_box </mat-icon>Add Product</a> -->
+
+
 </mat-toolbar>
-  
+
+
+<!-- <a button mat-button [routerLink]='["/dashboard"]'>
+    <mat-icon class="addButtonAlignment" aria-hidden="false" color="accent" >add_box </mat-icon> -->
+        <!-- <button mat-button [routerLink]='["/order"]'>Order</button></a> -->
+
+        <!-- <button mat-raised-button color="primary">Primary</button> -->
+        <a button mat-button class="addButton" class="float" [routerLink]='["/dashboard"]'>
+            <mat-icon class="addButtonAlignment" aria-hidden="false" color="accent" >add_box </mat-icon>Add Product</a>
+        
