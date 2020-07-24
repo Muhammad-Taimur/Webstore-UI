@@ -7,6 +7,10 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { AuthGuard } from './Guard/auth.guard';
 
 import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
+import { OrderComponent } from './Components/order/order.component';
+import { ProductComponent } from './Components/product/product.component';
+import { ContactComponent } from './components/contact/contact.component';
+
 
 
 const routes: Routes = [
@@ -14,6 +18,9 @@ const routes: Routes = [
   {path:'signup', component: SignupComponent,canActivate:[AlreadyLoggedInGuard]},
   {path:'login', component:LoginComponent,canActivate:[AlreadyLoggedInGuard]},
   {path:'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
+  {path:'order',component:OrderComponent},
+  {path:'product',component:ProductComponent},
+  {path:'contact',component:ContactComponent},
   {path:'**', component:NotFoundComponent}
 
 ];

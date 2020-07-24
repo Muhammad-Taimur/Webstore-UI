@@ -1,1 +1,59 @@
-<p>product works!</p>
+<app-navbar></app-navbar>
+
+<div id="login">
+    <h3 class="text-center text-white pt-5">Login form</h3>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                   
+                   
+                    <form  [formGroup]="formregister" (ngSubmit)="submit()">
+                        <h3 class="text-center text-info">Add Product</h3>
+                        <div class="form-group">
+                            <label for="firstname" class="text-info">Product Name:</label><br>
+                            <input formControlName="firstname" type="text" name="firstname" id="firstname" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="text-info">Category:</label><br>
+                            <input formControlName="lastname" type="text" name="lastname" id="lastname" class="form-control">
+                        </div>                        
+                        <div class="form-group">
+                            <label for="email" class="text-info">Details:</label><br>
+                            <input formControlName="email" type="text" name="email" id="email" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="file" accept="image/*"  (change)="uploadFile($event)" placeholder="" formControlName="img_file">
+                        </div>
+                        
+                            <div class="form-group">
+                                
+
+                            <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
+                            <input [disabled]="formregister.invalid" type="submit" name="submit" class="btn btn-info btn-md" value="Add Product">
+                        
+                            <!-- <div id="register-link" class="text-right">
+                                <a routerLink="/login" class="text-info">Already Registerd</a>
+                            </div> -->
+                        </div>
+
+                        
+
+                        <!-- <a h4 routerLink="/login">Already a user</a> -->
+                    </form>
+                    
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-spin-fade"
+  >
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
