@@ -11,9 +11,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductComponent implements OnInit {
 
-  selectedFiles :File  = null;
+  // selectedFiles :File  = null;
+  myFiles:string [] = [];
   public productservice = []
   public errMsg;
+  public urls =[]
 
   formregister = new FormGroup({
   
@@ -44,8 +46,32 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
   uploadFile(fl){
-    this.selectedFiles = fl.target.files[0];
-    console.log(this.selectedFiles);
+    // this.selectedFiles = fl.target.files[0];
+    // console.log(this.selectedFiles);
+
+    for (var i = 0; i < fl.target.files.length; i++) { 
+      this.myFiles.push(fl.target.files[i]);
+      var reader = new FileReader();
+        reader.readAsDataURL(fl.target.files[i]);
+        reader.onload=(event:any)=>{
+          this.urls.push(event.target.result)
+      console.log(this.myFiles);
+    }
+  }
+
+
+    // Adding Multiple Files
+    // if(fl.target.files){
+    //   for (let i=0; i<File.length; i++){
+    //     this.selectedFiles=fl.target.files[i];
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(fl.target.files[i]);
+    //     reader.onload=(event:any)=>{
+    //       this.urls.push(event.target.result)
+    //       console.log(this.selectedFiles);
+    //     }
+    //   }
+    // }
   }
 
 
@@ -54,8 +80,11 @@ export class ProductComponent implements OnInit {
 
     obj.append('name',this.formregister.value.firstname),
     obj.append('category',this.formregister.value.lastname),
-    obj.append('details',this.formregister.value.email),
-    obj.append('',this.selectedFiles);
+    obj.append('details',this.formregister.value.email)
+
+    for (var i = 0; i < this.myFiles.length; i++) { 
+    obj.append('',this.myFiles[i]);
+    }
 
     console.log(obj)
 
@@ -65,7 +94,7 @@ export class ProductComponent implements OnInit {
       console.log(this.productservice)
       if(data.status === 201){
         this.router.navigate(['dashboard']);
-        this.toastr.success('Sucessfully Login','Sucessful',{
+        this.toastr.success('Your Product is Added!','Congrats',{
           tapToDismiss:true
         })
       }
