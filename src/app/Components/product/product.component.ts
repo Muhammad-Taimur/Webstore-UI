@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/Services/product.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-product',
@@ -41,9 +42,11 @@ export class ProductComponent implements OnInit {
 
   constructor(private _productservice:ProductService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    
   }
   uploadFile(fl){
     // this.selectedFiles = fl.target.files[0];
@@ -76,6 +79,7 @@ export class ProductComponent implements OnInit {
 
 
   submit(){
+    this.spinner.show()
     const obj = new FormData();
 
     obj.append('name',this.formregister.value.firstname),
@@ -91,16 +95,22 @@ export class ProductComponent implements OnInit {
     this._productservice.postProduct(obj)
     .subscribe((data)=> {
       this.productservice = data,
+      this.spinner.show();
       console.log(this.productservice)
+      
       if(data.status === 201){
+        
+        this.spinner.hide();
         this.router.navigate(['dashboard']);
+        this.spinner.hide()
         this.toastr.success('Your Product is Added!','Congrats',{
           tapToDismiss:true
         })
       }
     },
     (error) => {
-      this.errMsg = error,
+      this.errMsg = error
+      this.spinner.hide()
       console.log(error)
     }
     )

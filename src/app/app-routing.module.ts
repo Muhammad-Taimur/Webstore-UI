@@ -18,9 +18,9 @@ const routes: Routes = [
   {path:'signup', component: SignupComponent,canActivate:[AlreadyLoggedInGuard]},
   {path:'login', component:LoginComponent,canActivate:[AlreadyLoggedInGuard]},
   {path:'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
-  {path:'order',component:OrderComponent},
-  {path:'product',component:ProductComponent},
-  {path:'contact',component:ContactComponent},
+  {path:'order',component:OrderComponent,canActivate: [AuthGuard]},
+  {path:'product',component:ProductComponent,canActivate: [AuthGuard]},
+  {path:'contact',component:ContactComponent,canActivate: [AuthGuard]},
   {path:'**', component:NotFoundComponent}
 
 ];
