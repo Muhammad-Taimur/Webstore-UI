@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
         console.log(this.productservice)
         },
         error => {this.errMsg = error,
-          // this.spinner.hide()
+          this.spinner.hide()
         console.log(error)});
       }
  

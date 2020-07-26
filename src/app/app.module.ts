@@ -33,6 +33,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NewnavbarComponent } from './components/newnavbar/newnavbar.component';
+import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 
 
 
@@ -78,7 +79,11 @@ import { NewnavbarComponent } from './components/newnavbar/newnavbar.component';
       preventDuplicates: true
     })
   ],
-  providers: [AuthService, AuthGuard,AlreadyLoggedInGuard],
+  providers: [AuthService, AuthGuard,AlreadyLoggedInGuard,
+    {provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true}
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,6 +27,9 @@ export class ProductComponent implements OnInit {
     [Validators.required]),
   
     email : new FormControl('',
+    [Validators.required]),
+    
+    img_file: new FormControl('',
     [Validators.required])
 
     // image: new FormControl('',

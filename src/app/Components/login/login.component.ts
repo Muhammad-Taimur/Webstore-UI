@@ -53,16 +53,17 @@ export class LoginComponent implements OnInit {
       this.spinner.hide();
 
     
-      console.log(data)
-      console.log(data.status)
-      console.log(data.body.access_token)
-      console.log(data.body)
+      // console.log(data)
+      // console.log(data.status)
+      // console.log(data.body.access_token)
+      // console.log(data.body)
 
       //setting full Object in Localstroage
       localStorage.setItem ('user',JSON.stringify(data.body))
 
       //Getting Full Object from Local Storage
-      JSON.parse(localStorage.getItem('user'))
+      let localStorageObject = JSON.parse(localStorage.getItem('user'))
+      console.log(localStorageObject.access_token)
 
       //to clear the localstorage 
       //localStorage.clear()

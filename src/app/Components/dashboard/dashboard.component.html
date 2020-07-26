@@ -8,6 +8,7 @@
 </ngx-spinner>                    
 
 
+
 <app-navbar></app-navbar>
 <!-- <app-newnavbar></app-newnavbar> -->
 <!-- <div *ngFor =   "let product of productservice"> -->
@@ -41,9 +42,8 @@
       </mat-card-actions>
     </mat-card> -->
 
-<mat-card *ngFor =   "let product of productservice" class="example-card">
+<mat-card *ngFor ="let product of productservice" class="example-card">
     <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <mat-card-title class="mat-card-title">{{product.name | titlecase}}</mat-card-title>
       <mat-card-subtitle class="mat-card-subtitle" >{{product.category | titlecase}}</mat-card-subtitle>
     </mat-card-header> 
@@ -53,7 +53,7 @@
     </div>   
     <mat-card-content>
       <p>
-        {{product.category | titlecase}}.
+        {{product.details | titlecase}}.
       </p>
     </mat-card-content>
     <mat-card-actions>
@@ -124,3 +124,17 @@
 
 </div>
  -->
+
+
+<div *ngIf="errMsg">
+ <div class="error-template">
+  <h1>
+      Oops!</h1>
+  <h2>
+      Request is Not Authorzie</h2>
+  <div class="error-details">
+      Your are not logged in or You Login session has expired!
+  </div>
+
+</div>
+</div>
