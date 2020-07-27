@@ -8,12 +8,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 //import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-// Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-// import {FlexLayoutModule} from '@angular/flex-layout'
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +32,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { NewnavbarComponent } from './components/newnavbar/newnavbar.component';
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
+import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 
 
 
@@ -51,7 +50,9 @@ import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
     NavbarComponent,
     FooterComponent,
     ContactComponent,
-    NewnavbarComponent
+    NewnavbarComponent,
+    ProductdetailComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,7 @@ import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    // FlexLayoutModule,
+    NgxGalleryModule,
     ToastrModule.forRoot({
       closeButton : true,
       timeOut: 5000,

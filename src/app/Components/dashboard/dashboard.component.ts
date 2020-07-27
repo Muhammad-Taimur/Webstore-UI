@@ -3,6 +3,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ProductService } from 'src/app/Services/product.service';
 import { Observable } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // import {MatCardModule} from '@angular/material/card';
 
 
@@ -18,7 +20,9 @@ export class DashboardComponent implements OnInit {
   public errMsg;
 
   constructor(private _productservice:ProductService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    private _router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.spinner.show()
@@ -33,7 +37,15 @@ export class DashboardComponent implements OnInit {
         },
         error => {this.errMsg = error,
           this.spinner.hide()
+this._router.navigate(["login"]);
+this.toastr.error('Autorization Failed','Oops',{
+  tapToDismiss:true
+})
         console.log(error)});
+      }
+
+      onSelect(product){
+        this._router.navigate(["/dashboard",product.productId])
       }
  
   

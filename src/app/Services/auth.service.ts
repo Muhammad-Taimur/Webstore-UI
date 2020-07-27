@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { throwError as observableThrowError ,Observable, ObservableInput } from 'rxjs';
 import { Itoken } from 'src/app/Models/IToken';
+import { ProductService } from './product.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  public productservice = []
+  public errMsg;
   private registerApi = 'https://localhost:44362/api/Account/Register'
   private loginApi = 'https://localhost:44362/token'
 
   //errorHandler: (err: any, caught: Observable<any>) => ObservableInput<any>;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private _productservice:ProductService,
+    private _router:Router) { }
 
 
 //Signup Method
@@ -67,7 +73,19 @@ errorHandler(error: HttpErrorResponse ){
 
   //Check user is Logged in or Not
   loggedIn(){
+    // let localStorageObject = JSON.parse(localStorage.getItem('user'))
+    // return !! localStorageObject.access_token
+    // if (JSON.parse(localStorage.getItem('user')) === )
     return !!JSON.parse(localStorage.getItem('user'))
   }
 
-}
+     
+ 
+//       isAuthorized(){
+//         return this.checkAuthorize()
+//       }
+    }
+
+  
+
+// }

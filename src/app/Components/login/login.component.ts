@@ -43,15 +43,7 @@ export class LoginComponent implements OnInit {
       // if(data.status === 200){
       //   this.toastr.success('Login','Successfully')
       //       }
-      if(data.status === 200){
-        this.router.navigate(['dashboard']);
-        this.toastr.success('Sucessfully Login','Sucessful',{
-          tapToDismiss:true
-        })
-      }
-      
-      this.spinner.hide();
-
+     
     
       // console.log(data)
       // console.log(data.status)
@@ -64,6 +56,15 @@ export class LoginComponent implements OnInit {
       //Getting Full Object from Local Storage
       let localStorageObject = JSON.parse(localStorage.getItem('user'))
       console.log(localStorageObject.access_token)
+
+      if(data.status === 200 ){
+        this.router.navigate(['dashboard']);
+        // this.toastr.success('Sucessfully Login','Sucessful',{
+        //   tapToDismiss:true
+        // })
+      }
+      
+      this.spinner.hide();
 
       //to clear the localstorage 
       //localStorage.clear()
@@ -86,7 +87,8 @@ export class LoginComponent implements OnInit {
     );
 
     console.log(this.formlogin)
-    console.log(this.formlogin.value)
+    console.log(this.formlogin.value)    
   }
+
 
 }

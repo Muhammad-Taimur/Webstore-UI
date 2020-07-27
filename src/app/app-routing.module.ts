@@ -10,14 +10,14 @@ import { AlreadyLoggedInGuard } from './Guard/already-logged-in.guard';
 import { OrderComponent } from './Components/order/order.component';
 import { ProductComponent } from './Components/product/product.component';
 import { ContactComponent } from './components/contact/contact.component';
-
-
+import { ProductdetailComponent } from './components/productdetail/productdetail.component';
 
 const routes: Routes = [
   {path:'', redirectTo : '/login', pathMatch: 'full'},
   {path:'signup', component: SignupComponent,canActivate:[AlreadyLoggedInGuard]},
   {path:'login', component:LoginComponent,canActivate:[AlreadyLoggedInGuard]},
   {path:'dashboard', component:DashboardComponent,canActivate: [AuthGuard]},
+  {path:'dashboard/:id', component:ProductdetailComponent,canActivate: [AuthGuard]},
   {path:'order',component:OrderComponent,canActivate: [AuthGuard]},
   {path:'product',component:ProductComponent,canActivate: [AuthGuard]},
   {path:'contact',component:ContactComponent,canActivate: [AuthGuard]},
