@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
       this._productservice.getProduct()
         .subscribe((data) => {
           this.productservice = data.body;
+          
           // this.imageBlob = data.body
         // console.log(this.imageBlob)
         this.spinner.hide()
@@ -42,11 +43,20 @@ this.toastr.error('Autorization Failed','Oops',{
   tapToDismiss:true
 })
         console.log(error)});
+        
+        
+        console.log("Ye BHR ka Data ha"+JSON.stringify(this.productservice))
+
       }
 
       onSelect(product){
+
         this._router.navigate(["/dashboard",product.productId])
+        this._productservice.getProductIdforApi(product.productId)
+        console.log("Sent Prodcut ID: "+product.productId)
       }
+
+      
  
   
   //       this._productservice.getProduct()

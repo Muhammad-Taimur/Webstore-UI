@@ -34,7 +34,8 @@ formregister = new FormGroup({
   [Validators.required]),
 
   password: new FormControl('',
-    [Validators.required]),
+    [Validators.required,
+    Validators.minLength(6)]),
    
     confirmpassword: new FormControl('',
     [Validators.required])
@@ -49,9 +50,9 @@ formregister = new FormGroup({
     var message = document.getElementById('error-nwl');
 
     //var password = "123456"
-if(this.formregister.value.password.length < 6){
-    message.innerHTML = " you have to enter at least 6 digit!"
-}
+// if(this.formregister.value.password.length < 6){
+//     message.innerHTML = " you have to enter at least 6 digit!"
+// }
     // console.log(this.formregister)
     console.log(this.formregister.value)
 
@@ -125,5 +126,9 @@ if(this.formregister.value.password.length < 6){
     );
     
   }
+
+get myform(){
+  return this.formregister.controls
+}
 
 }

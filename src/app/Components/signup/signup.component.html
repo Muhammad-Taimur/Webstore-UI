@@ -11,6 +11,9 @@
                         <div class="form-group">
                             <label for="firstname" class="text-info">First Name:</label><br>
                             <input formControlName="firstname" type="text" name="firstname" id="firstname" class="form-control">
+                            <div *ngIf="myform.firstname.touched && myform.firstname.invalid">
+                                <div class="danger" *ngIf="myform.firstname.errors?.required">Type Atleast 6 digits</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="lastname" class="text-info">Last Name:</label><br>
@@ -24,7 +27,11 @@
                             
                             <label for="password" class="text-info">Password:</label><br>
                             <input  formControlName="password" type="password" name="password" id="password" class="form-control">
-                            <div  id="error-nwl">  </div>
+                            <!-- <div  id="error-nwl">  </div> -->
+                            <div *ngIf="myform.password.touched && myform.password.invalid">
+                                <div class="danger" *ngIf="myform.password.errors?.required">It is Required</div>
+                                <div class="danger" *ngIf="myform.password.errors?.minlength">Type Atleast 6 digits</div>
+                            </div>
                         </div>
 
                         <div class="form-group">

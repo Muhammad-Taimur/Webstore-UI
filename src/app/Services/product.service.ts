@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-import { throwError as observableThrowError ,Observable, ObservableInput } from 'rxjs';
+import { throwError as observableThrowError ,Observable, ObservableInput, Subject } from 'rxjs';
 import { Itoken } from 'src/app/Models/IToken';
 
 
@@ -10,6 +10,7 @@ import { Itoken } from 'src/app/Models/IToken';
 })
 export class ProductService {
 
+  public id;
   private productApi = 'https://localhost:44362/Api/Products'
   private orderApi= 'https://localhost:44362/Api/orders'
 
@@ -32,9 +33,9 @@ postProduct(data) :Observable<any>{
     catchError(this.errorHandler)
   );
   }
+
   
   //Error Handler
-
   errorHandler(error: HttpErrorResponse){
     return observableThrowError(error || "Server Error")
   }
@@ -42,4 +43,21 @@ postProduct(data) :Observable<any>{
   //    return observableThrowError(error || "Yesh Server Ka Error")
   //    console.log(error)
   // }
+
+private getproductId = new Subject<string>();
+getproductId$ = this.getproductId.asObservable();
+
+getProductIdforApi(id:string){
+  this.getproductId.next(id)
+  console.log("Received Product ID "+id)
+}
+
+getProductIdAPI(id:string):Observable<any>{
+  return  this.http.get<any>(this.productApi+"/"+id)
+  .pipe(
+    catchError(this.errorHandler)
+  );
+}
+
+
 }
