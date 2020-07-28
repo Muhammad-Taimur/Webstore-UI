@@ -12,16 +12,23 @@
                             <label for="firstname" class="text-info">First Name:</label><br>
                             <input formControlName="firstname" type="text" name="firstname" id="firstname" class="form-control">
                             <div *ngIf="myform.firstname.touched && myform.firstname.invalid">
-                                <div class="danger" *ngIf="myform.firstname.errors?.required">Type Atleast 6 digits</div>
+                                <div class="text-danger" *ngIf="myform.firstname.errors?.required">Required*</div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lastname" class="text-info">Last Name:</label><br>
                             <input formControlName="lastname" type="text" name="lastname" id="lastname" class="form-control">
+                            <div *ngIf="myform.lastname.touched && myform.lastname.invalid">
+                                <div class="text-danger" *ngIf="myform.lastname.errors?.required">Required*</div>
+                            </div>
                         </div>                        
                         <div class="form-group">
                             <label for="email" class="text-info">Email:</label><br>
                             <input formControlName="email" type="text" name="email" id="email" class="form-control">
+                            <div *ngIf="myform.email.touched && myform.email.invalid">
+                                <div class="text-danger" *ngIf="myform.email.errors?.required">Required*</div>
+                                <div class="text-danger" *ngIf="myform.email.errors?.email">Please Enter Valid Email</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             
@@ -29,14 +36,19 @@
                             <input  formControlName="password" type="password" name="password" id="password" class="form-control">
                             <!-- <div  id="error-nwl">  </div> -->
                             <div *ngIf="myform.password.touched && myform.password.invalid">
-                                <div class="danger" *ngIf="myform.password.errors?.required">It is Required</div>
-                                <div class="danger" *ngIf="myform.password.errors?.minlength">Type Atleast 6 digits</div>
+                                <div class="text-danger" *ngIf="myform.password.errors?.required">Required*</div>
+                                <div class="text-danger" *ngIf="myform.password.errors?.minlength">Type Atleast 6 digits</div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="confirmpassword" class="text-info">Confirm Password:</label><br>
                             <input  formControlName="confirmpassword" type="password" name="confirmpassword" id="confirmpassword" class="form-control">
+                            <div *ngIf="myform.confirmpassword.touched && myform.confirmpassword.invalid">
+                                <div class="text-danger" *ngIf="myform.confirmpassword.errors?.required">Required*</div>
+                                <!-- <div class="text-danger" *ngIf="myform.confirmpassword.errors?.minlength">Type Atleast 6 digits</div> -->
+                                <div class="text-danger" *ngIf="myform.password.value!= myform.confirmpassword.value">Password & Confirm Password does not match</div>
+                            </div>
                         </div>
                         
                             <div class="form-group">

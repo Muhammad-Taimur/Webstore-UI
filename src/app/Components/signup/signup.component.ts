@@ -31,7 +31,7 @@ formregister = new FormGroup({
   [Validators.required]),
 
   email : new FormControl('',
-  [Validators.required]),
+  [Validators.required,Validators.email]),
 
   password: new FormControl('',
     [Validators.required,
